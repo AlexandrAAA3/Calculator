@@ -21,7 +21,13 @@ std::vector<Token> Tokenizator::tokenize(const std::string &in_string) {
         }
 
         if (!buff.empty()) {
-            if (std::isalpha(buff[0])) {
+            if (buff == "e") {
+                out_vector.push_back({TokenType::Number, std::numbers::e, ""});
+            } else if (buff == "pi") {
+                out_vector.push_back({TokenType::Number, std::numbers::pi, ""});
+            } else if (buff == "phi") {
+                out_vector.push_back({TokenType::Number, std::numbers::phi, ""});
+            } else if (std::isalpha(buff[0])) {
                 out_vector.push_back({TokenType::Function, 0.0, buff});
             } else {
                 try {
